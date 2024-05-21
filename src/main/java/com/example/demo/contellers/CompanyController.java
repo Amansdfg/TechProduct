@@ -1,5 +1,6 @@
 package com.example.demo.contellers;
 
+import com.example.demo.DTOEntity.DTO;
 import com.example.demo.entities.Company;
 import com.example.demo.entities.CompanyDTO;
 import com.example.demo.services.CompanyService;

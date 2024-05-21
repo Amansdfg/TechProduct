@@ -1,5 +1,6 @@
 package com.example.demo.services.imp;
 
+import com.example.demo.DTOEntity.DTO;
 import com.example.demo.entities.Company;
 import com.example.demo.entities.CompanyDTO;
 import com.example.demo.mapper.MapperCompany;
