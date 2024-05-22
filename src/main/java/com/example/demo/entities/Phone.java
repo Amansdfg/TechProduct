@@ -41,4 +41,6 @@ public class Phone implements Device{
     private double battery;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Seller> sellers;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Photo> photos;
 }

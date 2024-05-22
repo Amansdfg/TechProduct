@@ -1,8 +1,11 @@
 package com.example.demo.services.imp;
 
 import com.example.demo.entities.Approval;
+import com.example.demo.entities.PhoneDTO;
 import com.example.demo.entities.User;
 import com.example.demo.exceptions.NotFoundException;
+import com.example.demo.mapper.MapperPhones;
+import com.example.demo.mapper.MapperUser;
 import com.example.demo.repositories.RepositoryApproval;
 import com.example.demo.repositories.RepositoryUser;
 import com.example.demo.services.MailSenderService;
@@ -26,6 +29,10 @@ public class UserServiceImp implements UserDetailsService , UserService {
     private RepositoryApproval approvals;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private MapperUser mapper;
+    @Autowired
+    private MapperPhones mapperPhones;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user=users.findAllByEmail(username);
@@ -92,5 +99,11 @@ public class UserServiceImp implements UserDetailsService , UserService {
         user.setPassword(passwordEncoder.encode(password));
         users.save(user);
         return "success";
+    }
+
+    @Override
+    public List<PhoneDTO> getPhones(Long id) {
+        User user=users.findById(id).orElseThrow();
+        return mapperPhones.mapToDTOList(user.getPhones());
     }
 }

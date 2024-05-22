@@ -3,8 +3,10 @@ package com.example.demo.services.imp;
 
 import com.example.demo.entities.Phone;
 import com.example.demo.entities.PhoneDTO;
+import com.example.demo.entities.User;
 import com.example.demo.mapper.MapperPhones;
 import com.example.demo.repositories.RepositoryPhone;
+import com.example.demo.repositories.RepositoryUser;
 import com.example.demo.services.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class PhoneServiceImp implements PhoneService {
     private RepositoryPhone phones;
     @Autowired
     private MapperPhones mapper;
+    @Autowired
+    private RepositoryUser users;
     @Override
     public List<PhoneDTO> getAllPhones() {
         return mapper.mapToDTOList(phones.findAll());
@@ -43,5 +47,14 @@ public class PhoneServiceImp implements PhoneService {
     @Override
     public PhoneDTO getPhoneById(Long id) {
         return mapper.mapToDTO(phones.findById(id).orElse(null));
+    }
+    public String addToBag(User user , Long id){
+        Phone phone=phones.findById(id).orElseThrow();
+        if(phone!=null && user !=null) {
+            user.addPhone(phone);
+            users.save(user);
+            return "Successfully added to bag";
+        }
+        return "Something went wrong";
     }
 }

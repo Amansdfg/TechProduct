@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Phone;
 import com.example.demo.entities.PhoneDTO;
+import com.example.demo.entities.User;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface PhoneService {
     void removePhone(Long id);
     List<PhoneDTO> searchByName(String name);
     PhoneDTO getPhoneById(Long id);
+     String addToBag(User user , Long id);
 }

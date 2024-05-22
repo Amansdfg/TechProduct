@@ -37,5 +37,9 @@ public class MainController {
     public String forgot(){
         return "authorize/forgot";
     }
-
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/bag")
+    public String bag(){
+        return "bag";
+    }
 }

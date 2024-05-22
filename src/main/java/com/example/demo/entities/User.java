@@ -27,6 +27,8 @@ public class User implements UserDetails {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Approval> approvals;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Phone> phones;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -56,5 +58,8 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public void addPhone(Phone phone){
+        phones.add(phone);
     }
 }

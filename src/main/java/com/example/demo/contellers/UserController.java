@@ -1,5 +1,6 @@
 package com.example.demo.contellers;
 
+import com.example.demo.entities.PhoneDTO;
 import com.example.demo.entities.User;
 import com.example.demo.exceptions.ErrorDetails;
 import com.example.demo.exceptions.NotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class UserController {
     private UserService service;
     @Autowired
     private MailSenderService mailSenderService;
+
     private  Random random=new Random();
     private int code;
     @GetMapping
@@ -40,7 +43,12 @@ public class UserController {
     }
     @PostMapping
     public String addUser(@RequestBody User user,@RequestParam("retypePassword")String word){
-        return service.signUp(user, word);
+        try {
+            mailSenderService.send(user.getEmail(), "Authorization", "Successfully signed up to techGadget");
+            return service.signUp(user, word);
+        }catch (Exception e){
+            return "Email doest exits";
+        }
     }
     @DeleteMapping("{id}")
     public void deleteUserById(@PathVariable("id")Long id) {
@@ -83,5 +91,9 @@ public class UserController {
     @PostMapping("/change")
     public String change(@RequestParam("id")Long id,@RequestParam("password")String password,@RequestParam("retypePassword")String retypePassword){
         return service.changePassword(id,password,retypePassword);
+    }
+    @GetMapping("/bag/{id}")
+    public List<PhoneDTO> getPhones(@PathVariable Long  id){
+        return service.getPhones(service.getUserById(id).getId());
     }
 }
