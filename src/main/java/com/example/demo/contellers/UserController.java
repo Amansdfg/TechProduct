@@ -92,8 +92,8 @@ public class UserController {
     public String change(@RequestParam("id")Long id,@RequestParam("password")String password,@RequestParam("retypePassword")String retypePassword){
         return service.changePassword(id,password,retypePassword);
     }
-    @GetMapping("/bag/{id}")
-    public List<PhoneDTO> getPhones(@PathVariable Long  id){
-        return service.getPhones(service.getUserById(id).getId());
+    @GetMapping("/bag")
+    public List<PhoneDTO> getPhones(@AuthenticationPrincipal User user){
+        return service.getPhones(user.getId());
     }
 }

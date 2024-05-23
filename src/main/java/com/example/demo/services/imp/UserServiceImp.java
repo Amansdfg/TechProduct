@@ -80,7 +80,6 @@ public class UserServiceImp implements UserDetailsService , UserService {
     public void deleteUserById(Long id) {
         users.deleteById(id);
     }
-
     @Override
     public User getUserByEmail(String email) throws NotFoundException {
         User user=users.findAllByEmail(email);
@@ -89,7 +88,6 @@ public class UserServiceImp implements UserDetailsService , UserService {
         }
         return user;
     }
-
     @Override
     public String changePassword(Long id, String password, String retypePassword) {
         if(!password.equals(retypePassword)){
@@ -100,7 +98,6 @@ public class UserServiceImp implements UserDetailsService , UserService {
         users.save(user);
         return "success";
     }
-
     @Override
     public List<PhoneDTO> getPhones(Long id) {
         User user=users.findById(id).orElseThrow();
