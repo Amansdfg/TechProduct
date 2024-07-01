@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<!--@Entity-->
+<!--@AllArgsConstructor-->
+<!--@NoArgsConstructor-->
+<!--@Table(name = "phones")-->
+<!--@Setter-->
+<!--@Getter-->
+<!--public class Phone implements Device{-->
+<!--@Id-->
+<!--@GeneratedValue(strategy = GenerationType.IDENTITY)-->
+<!--private Long id;-->
+<!--private String name;-->
+<!--private String color;-->
+<!--private BigInteger price;-->
+<!--@ManyToMany(fetch = FetchType.EAGER)-->
+<!--private List<Company> company;-->
+<!--    private boolean available;-->
+<!--    private int stockQuantity;-->
+<!--    private String description;-->
+<!--    private double weight;-->
+<!--    private String screenSize;-->
+<!--    private String resolution;-->
+<!--    private String processor;-->
+<!--    private int ramSizeGB;-->
+<!--    private int storageSizeGB;-->
+<!--    private boolean touchscreen;-->
+<!--    private boolean wifiEnabled;-->
+<!--    private boolean bluetoothEnabled;-->
+<!--    private boolean nfcEnabled;-->
+<!--    private String operatingSystem;-->
+<!--    private double battery;-->
+<!--    @ManyToMany(fetch = FetchType.EAGER)-->
+<!--    private List<Seller> sellers;-->
+<!--        @ManyToMany(fetch = FetchType.EAGER)-->
+<!--        private List<Photo> photos;-->
+<!--            }-->
+
+<div style="width: 100vw;display: flex;justify-content: center; align-items: center">
+    <form action="/phones" method="post" style="width: 600px">
+        <div>
+            <label class="form-label">Name</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Color</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Price</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">stockQuantity</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">description</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">weight</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">screenSize</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">weight</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">resolution</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">processor</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">ramSizeGB</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">storageSizeGB</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">touchscreen</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">wifiEnabled</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">bluetoothEnabled</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">nfcEnabled</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">operatingSystem</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">battery</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">battery</label>
+            <input class="form-control">
+        </div>
+        <div class="mt-3">
+            <button onclick="">add</button>
+        </div>
+    </form>
+</div>
+<script>
+    function handleClick(){
+        let request=new XMLHttpRequest();
+        request.onreadystatechange=function () {
+            if(this.readyState===request.DONE && request.status===200){
+
+            }
+        }
+
+        request.open("POST","/phones");
+        request.send();
+    }
+</script>
+</body>
+</html>

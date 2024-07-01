@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/techGadget")
 public class MainController {
+    @GetMapping("/tail")
+    public String tail(){
+        return "tail";
+    }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/laptops")
     public String getLaptops(){
@@ -19,12 +23,12 @@ public class MainController {
     public String getPhones(){
         return "phones";
     }
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/phones/{id}")
-    public String getPhones(@PathVariable("id")Long id, Model model){
-        model.addAttribute("id",id);
-        return "phone";
-    }
+//    @PreAuthorize("isAuthenticated()")
+//    @GetMapping("/phones/{id}")
+//    public String getPhones(@PathVariable("id")Long id, Model model){
+//        model.addAttribute("id",id);
+//        return "phone";
+//    }
     @GetMapping("/sign-in")
     public String login(){
         return "authorize/signIn";
@@ -41,5 +45,10 @@ public class MainController {
     @GetMapping("/bag")
     public String bag(){
         return "bag";
+    }
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/add-phone")
+    public String addPhone(){
+        return "addPhone";
     }
 }

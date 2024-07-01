@@ -4,14 +4,18 @@ package com.example.demo.services.imp;
 import com.example.demo.entities.Phone;
 import com.example.demo.entities.PhoneDTO;
 import com.example.demo.entities.User;
+import com.example.demo.entities.filter.Filter;
 import com.example.demo.mapper.MapperPhones;
 import com.example.demo.repositories.RepositoryPhone;
 import com.example.demo.repositories.RepositoryUser;
 import com.example.demo.services.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @Transactional
@@ -23,8 +27,15 @@ public class PhoneServiceImp implements PhoneService {
     @Autowired
     private RepositoryUser users;
     @Override
-    public List<PhoneDTO> getAllPhones() {
-        return mapper.mapToDTOList(phones.findAll());
+    public List<PhoneDTO> getAllPhones(Filter filter) {
+         Page<Phone> phones1=phones.findAll(PageRequest.of(filter.getLimit(), filter.getOffset()));
+         List<PhoneDTO> list =new ArrayList<>();
+         for(Phone phone:phones1){
+             list.add(mapper.mapToDTO(phone));
+         }
+         return list;
+         //return mapper.mapToDTOList(phones.findAll());
+
     }
     @Override
     public PhoneDTO updatePhones(Phone phoneDTO) {

@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import com.example.demo.entities.Phone;
 import com.example.demo.entities.PhoneDTO;
 import com.example.demo.entities.User;
 

@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class User implements UserDetails {
     private String email;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Approval> approvals;
+    private Set<Approval> approvals;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Phone> phones;
 

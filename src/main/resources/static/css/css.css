@@ -1,0 +1,4 @@
+.always-visible {
+    display: block !important; /* Make sure it's displayed */
+    /* Add any other necessary styles */
+}

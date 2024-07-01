@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.File;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -39,6 +41,8 @@ public class Phone implements Device{
     private boolean nfcEnabled;
     private String operatingSystem;
     private double battery;
+    private File photoFile;
+    private Date date;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Seller> sellers;
     @ManyToMany(fetch = FetchType.EAGER)

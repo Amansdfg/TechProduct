@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +17,5 @@ public class UserDTO {
     private String fullName;
     private String email;
     private String password;
-    private List<Approval> approvals;
+    private Set<Approval> approvals;
 }

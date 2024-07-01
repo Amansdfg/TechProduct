@@ -19,7 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImp implements UserDetailsService , UserService {
@@ -48,7 +50,7 @@ public class UserServiceImp implements UserDetailsService , UserService {
                 currentUser = user;
                 currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
                 Approval approval = approvals.findAllByStatus("user");
-                List<Approval> approvals1 = new ArrayList<>();
+                Set<Approval> approvals1 = new HashSet<>();
                 approvals1.add(approval);
                 currentUser.setApprovals(approvals1);
                 users.save(currentUser);
